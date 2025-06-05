@@ -5,7 +5,8 @@ interface Props {
     className?: string;
     leftIcon?: ReactNode;
     value: string;
-    onChange: (value: string) => void;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    placeholder?: string;
 }
 
 export const Input: React.FC<Props> = ({
@@ -13,15 +14,24 @@ export const Input: React.FC<Props> = ({
     leftIcon,
     onChange,
     value,
+    ...props
 }: Props): JSX.Element => {
     return (
-        <div className={"flex justify-between relative"}>
-            {leftIcon && leftIcon}
+        <div className={" flex justify-between relative"}>
+            {leftIcon && (
+                <div className="absolute left-3 top-1/2 -translate-y-1/2 ">
+                    {leftIcon}
+                </div>
+            )}
             <input
-                className={clsx("", className)}
-                onChange={(e) => onChange(e.target.value)}
+                className={clsx(
+                    "bg-grey w-full outline-none rounded-4xl border-border border-[1px]",
+                    className
+                )}
+                onChange={(e) => onChange(e)}
                 value={value}
                 type="text"
+                {...props}
             />
         </div>
     );
