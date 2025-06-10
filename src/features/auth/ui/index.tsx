@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React from "react";
 import { AuthForm } from "@/entities/auth";
-import { useYupForm } from "../model/useYupForm";
+import { useYupForm } from "../model/use-yup-form";
 
 interface Props {
     className?: string;

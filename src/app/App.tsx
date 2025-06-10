@@ -1,19 +1,21 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthPage } from "@/pages/auth";
+import { LayoutComponent } from "@/widgets/layout";
 import { Dashboard } from "../pages/dashboard";
-import { SideBar } from "../widgets/side-bar";
+import { PrivateRoute } from "./route/private-route";
 import "./styles/index.css";
 
 function App() {
     return (
         <BrowserRouter>
-            <div className="grid grid-cols-[240px_1fr] h-screen">
-                <SideBar />
+            <LayoutComponent>
                 <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/auth/:type" element={<AuthPage />} />
+                    <Route element={<PrivateRoute />}>
+                        <Route path="/" element={<Dashboard />} />
+                    </Route>
+                    <Route path="/:type" element={<AuthPage />} />
                 </Routes>
-            </div>
+            </LayoutComponent>
         </BrowserRouter>
     );
 }
