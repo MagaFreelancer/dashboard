@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { Gauge, Grid2x2 } from "lucide-react";
 import { useState } from "react";
 import { type JSX } from "react";
-import { useNavigate } from "react-router";
+import { NavLink } from "react-router";
 import { ROUTES } from "../../../shared/config/routes.ts";
 
 const navItems = [
@@ -25,15 +25,13 @@ const navItems = [
 
 export const SideBar = (): JSX.Element => {
     const [activeIndex, setActiveIndex] = useState<number>(0);
-    const navigate = useNavigate();
 
-    const handleClick = (index: number, route: string) => {
+    const handleClick = (index: number) => {
         setActiveIndex(index);
-        navigate(route);
     };
 
     return (
-        <aside className="py-6 pr-6">
+        <aside className="py-6">
             <h1 className="mb-7 text-[20px] font-extrabold text-center">
                 <span className="text-[#4880FF]">Dash</span>Stack
             </h1>
@@ -45,29 +43,31 @@ export const SideBar = (): JSX.Element => {
                         return (
                             <li
                                 key={index}
-                                className="w-full transition relative cursor-pointer text-[14px] font-semibold "
-                                onClick={() => handleClick(index, item.route)}
+                                className="w-full relative cursor-pointer text-[14px] font-semibold mr-6"
+                                onClick={() => handleClick(index)}
                             >
-                                <div
-                                    className={clsx(
-                                        "absolute transition left-0 top-0 w-1.5 h-full rounded-r-[6px]",
-                                        isActive
-                                            ? "bg-[#4880FF]"
-                                            : "bg-transparent"
-                                    )}
-                                />
-                                <div className="ml-5">
+                                <NavLink to={item.route}>
                                     <div
                                         className={clsx(
-                                            "flex items-center gap-4 p-4 rounded-[6px] transition hover:bg-[#ebebeb]",
-                                            isActive &&
-                                                "text-white bg-[#4880FF] hover:bg-[#6694fa]!"
+                                            "absolute transition duration-200 -translate-x-2 transform left-0 top-0 w-1.5 h-full rounded-r-[6px]",
+                                            isActive
+                                                ? "bg-[#4880FF] translate-x-0"
+                                                : "bg-transparent "
                                         )}
-                                    >
-                                        {item.icon}
-                                        {item.label}
+                                    />
+                                    <div className="ml-5">
+                                        <div
+                                            className={clsx(
+                                                "flex transition duration-200 items-center gap-4 p-4 rounded-[6px]  hover:bg-[#ebebeb]",
+                                                isActive &&
+                                                    "text-white bg-[#4880FF] hover:bg-[#6694fa]!"
+                                            )}
+                                        >
+                                            {item.icon}
+                                            {item.label}
+                                        </div>
                                     </div>
-                                </div>
+                                </NavLink>
                             </li>
                         );
                     })}

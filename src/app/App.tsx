@@ -8,9 +8,7 @@ function App() {
         <BrowserRouter>
             <div className="grid grid-cols-[240px_1fr] h-screen">
                 <SideBar />
-                <main className="p-7 bg-[#F5F6FA]">
-                    <Dashboard />
-                </main>
+                <Dashboard />
             </div>
         </BrowserRouter>
     );
