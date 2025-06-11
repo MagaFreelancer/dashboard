@@ -1,11 +1,11 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { loginSchema, registerSchema } from "@/entities/auth";
 
 export const useYupForm = () => {
-    const { type } = useParams(); // "login" | "register"
-    const isLogin = type === "login";
+    const { pathname } = useLocation(); // "login" | "register"
+    const isLogin = pathname === "login";
 
     const {
         handleSubmit,

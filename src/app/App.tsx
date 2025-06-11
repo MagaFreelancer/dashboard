@@ -8,14 +8,16 @@ import "./styles/index.css";
 function App() {
     return (
         <BrowserRouter>
-            <LayoutComponent>
-                <Routes>
-                    <Route element={<PrivateRoute />}>
+            <Routes>
+                <Route element={<PrivateRoute />}>
+                    <Route element={<LayoutComponent />}>
                         <Route path="/" element={<Dashboard />} />
                     </Route>
-                    <Route path="/:type" element={<AuthPage />} />
-                </Routes>
-            </LayoutComponent>
+                </Route>
+                <Route path="/register" element={<AuthPage />} />
+                <Route path="/login" element={<AuthPage />} />
+                <Route path="*" element={<>ошибка</>} />
+            </Routes>
         </BrowserRouter>
     );
 }
