@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { Input } from "@/shared/ui/input";
 
 export const Field = ({
@@ -18,7 +19,10 @@ export const Field = ({
     <div className="w-full mb-4">
         <label className="block pb-1 text-grey700 font-semibold">{label}</label>
         <Input
-            className="w-full rounded-[10px]"
+            className={clsx(
+                "w-full rounded-[10px]",
+                error && "border border-red-500"
+            )}
             type={type}
             placeholder={placeholder}
             {...register(name)}
