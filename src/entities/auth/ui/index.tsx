@@ -1,39 +1,72 @@
-export const AuthForm = (props: any) => {
-    const { register, handleSubmit, errors, isLogin, onSubmit } = props;
+import clsx from "clsx";
+import type { JSX } from "react";
+import type React from "react";
+import { Button } from "@/shared/ui/button";
+import { Field } from "./field";
+
+interface Props {
+    register: any;
+    handleSubmit: any;
+    errors: any;
+    isLogin: boolean;
+    onSubmit: (data: any) => void;
+    className?: string;
+}
+
+export const AuthForm: React.FC<Props> = (props: Props): JSX.Element => {
+    const { register, handleSubmit, errors, isLogin, onSubmit, className } =
+        props;
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form
+            className={clsx("flex flex-col items-center", className)}
+            onSubmit={handleSubmit(onSubmit)}
+        >
             {!isLogin && (
-                <>
-                    <input placeholder="Имя" {...register("name")} />
-                    <p>{errors.name?.message}</p>
-                </>
+                <Field
+                    label="Name"
+                    name="name"
+                    placeholder="Your Name"
+                    register={register}
+                    error={errors.name?.message}
+                />
             )}
 
-            <input placeholder="Email" {...register("email")} />
-            <p>{errors.email?.message}</p>
-
-            <input
-                type="password"
-                placeholder="Пароль"
-                {...register("password")}
+            <Field
+                label="Email"
+                name="email"
+                type="email"
+                placeholder="Email"
+                register={register}
+                error={errors.email?.message}
             />
-            <p>{errors.password?.message}</p>
+
+            <Field
+                label="Password"
+                name="password"
+                type="password"
+                placeholder="Password"
+                register={register}
+                error={errors.password?.message}
+            />
 
             {!isLogin && (
-                <>
-                    <input
-                        type="password"
-                        placeholder="Подтвердите пароль"
-                        {...register("confirmPassword")}
-                    />
-                    <p>{errors.confirmPassword?.message}</p>
-                </>
+                <Field
+                    label="Confirm Password"
+                    name="confirmPassword"
+                    type="password"
+                    placeholder="Confirm Password"
+                    register={register}
+                    error={errors.confirmPassword?.message}
+                />
             )}
 
-            <button type="submit">
+            <Button
+                type="submit"
+                className="max-w-[416px] w-full cursor-pointer hover:opacity-90"
+            >
                 {isLogin ? "Войти" : "Зарегистрироваться"}
-            </button>
+            </Button>
         </form>
     );
 };

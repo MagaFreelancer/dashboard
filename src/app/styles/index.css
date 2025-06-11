@@ -3,12 +3,15 @@
 
 body {
     font-family: "Nunito Sans", sans-serif;
+    font-size: 18px;
 }
 
 @theme {
     --color-grey: #f5f6fa;
     --color-border: #d5d5d5;
     --color-accent: #9333ea;
+    --color-blue: #4880ff;
+    --color-grey700: rgba(32, 32, 32, 0.8);
 }
 
 @theme {

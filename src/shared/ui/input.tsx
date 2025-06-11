@@ -17,18 +17,19 @@ export const Input: React.FC<Props> = ({
     ...props
 }: Props): JSX.Element => {
     return (
-        <div className={" flex justify-between relative"}>
+        <div className="relative flex justify-between w-full">
             {leftIcon && (
-                <div className="absolute left-3 top-1/2 -translate-y-1/2 ">
+                <div className="absolute left-3 top-1/2 -translate-y-1/2">
                     {leftIcon}
                 </div>
             )}
             <input
                 className={clsx(
-                    "bg-grey w-full outline-none rounded-4xl border-border border-[1px]",
-                    className
+                    "py-3  pl-4 pr-2 bg-grey w-full outline-none rounded-4xl border-border border-[1px]",
+                    className,
+                    leftIcon && "pl-10" // чтобы не налезал текст на иконку
                 )}
-                onChange={(e) => onChange(e)}
+                onChange={onChange}
                 value={value}
                 type="text"
                 {...props}
