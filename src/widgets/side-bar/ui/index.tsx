@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { Gauge, Grid2x2 } from "lucide-react";
 import { useState } from "react";
 import { type JSX } from "react";
-import { NavLink } from "react-router";
+import { ListItem } from "@/entities/list-item";
 import { ROUTES } from "../../../shared/config/routes.ts";
 
 const navItems = [
@@ -41,34 +41,13 @@ export const SideBar = (): JSX.Element => {
                         const isActive = activeIndex === index;
 
                         return (
-                            <li
+                            <ListItem
                                 key={index}
-                                className="w-full relative cursor-pointer text-[14px] font-semibold mr-6"
-                                onClick={() => handleClick(index)}
-                            >
-                                <NavLink to={item.route}>
-                                    <div
-                                        className={clsx(
-                                            "absolute transition duration-200 -translate-x-2 transform left-0 top-0 w-1.5 h-full rounded-r-[6px]",
-                                            isActive
-                                                ? "bg-[#4880FF] translate-x-0"
-                                                : "bg-transparent "
-                                        )}
-                                    />
-                                    <div className="ml-5">
-                                        <div
-                                            className={clsx(
-                                                "flex transition duration-200 items-center gap-4 p-4 rounded-[6px]  hover:bg-[#ebebeb]",
-                                                isActive &&
-                                                    "text-white bg-[#4880FF] hover:bg-[#6694fa]!"
-                                            )}
-                                        >
-                                            {item.icon}
-                                            {item.label}
-                                        </div>
-                                    </div>
-                                </NavLink>
-                            </li>
+                                index={index}
+                                item={item}
+                                handleClick={handleClick}
+                                isActive={isActive}
+                            />
                         );
                     })}
                 </ul>

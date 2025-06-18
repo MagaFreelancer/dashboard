@@ -10,6 +10,7 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ className }: Props) => {
     const [search, setSearch] = React.useState("");
+
     return (
         <header className={clsx("", className)}>
             <div>
@@ -18,7 +19,7 @@ export const Header: React.FC<Props> = ({ className }: Props) => {
                     value={search}
                 />
             </div>
-            <div>
+            <div className="relative">
                 <Dropdown
                     trigger={
                         <Profile
@@ -27,7 +28,11 @@ export const Header: React.FC<Props> = ({ className }: Props) => {
                         />
                     }
                 >
-                    lol
+                    <ul>
+                        <li>
+                            <button>Logout</button>
+                        </li>
+                    </ul>
                 </Dropdown>
             </div>
         </header>
