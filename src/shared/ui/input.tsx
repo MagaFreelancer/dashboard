@@ -25,7 +25,7 @@ export const Input: React.FC<Props> = ({
             )}
             <input
                 className={clsx(
-                    "py-3  pl-4 pr-2 bg-grey w-full outline-none rounded-4xl border-border border-[1px]",
+                    "py-3  pl-4 pr-2 bg-grey w-full  outline-none rounded-4xl border-border border-[1px]",
                     className,
                     leftIcon && "pl-10" // чтобы не налезал текст на иконку
                 )}

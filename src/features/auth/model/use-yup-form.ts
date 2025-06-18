@@ -7,6 +7,7 @@ import { loginSchema, registerSchema } from "@/entities/auth";
 export const useYupForm = () => {
     const { pathname } = useLocation(); // "login" | "register"
     const isLogin = pathname.includes("login");
+
     const {
         handleSubmit,
         register,
