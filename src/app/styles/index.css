@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+body {
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #202224;
+}
+
 @theme {
     --color-grey: #f5f6fa;
     --color-border: #d5d5d5;

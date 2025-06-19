@@ -1,27 +1,8 @@
 import clsx from "clsx";
-import { Gauge, Grid2x2 } from "lucide-react";
 import { useState } from "react";
 import { type JSX } from "react";
 import { NavLink } from "react-router";
-import { ROUTES } from "../../../shared/config/routes.ts";
-
-const navItems = [
-    {
-        label: "Dashboard",
-        icon: <Gauge />,
-        route: ROUTES.HOME,
-    },
-    {
-        label: "Register",
-        icon: <Grid2x2 />,
-        route: ROUTES.REGISTER,
-    },
-    {
-        label: "Login",
-        icon: <Gauge />,
-        route: ROUTES.LOGIN,
-    },
-];
+import { navItems } from "@/widgets/side-bar/model/nav-items.tsx";
 
 export const SideBar = (): JSX.Element => {
     const [activeIndex, setActiveIndex] = useState<number>(0);
