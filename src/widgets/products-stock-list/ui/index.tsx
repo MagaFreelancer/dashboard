@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { ProductStockItem } from "@/entities/product-sotck-item";
-
-// import {useEditProductStock} from "@/features/product-stock/edit";
+import Modal from "@/shared/ui/modal.tsx";
 
 const dataProducts = [
     {
@@ -27,7 +27,7 @@ const dataProducts = [
 ];
 
 export const ProductsStockList = () => {
-    // const { test, setTest } = useEditProductStock();
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
 
     return (
         <div className="bg-white rounded-lg border-[1px] border-[#D5D5D5]">
@@ -47,10 +47,14 @@ export const ProductsStockList = () => {
                         category={item.category}
                         price={item.price}
                         onDelete={() => console.log("delete")}
-                        onEdit={() => console.log("edit")}
+                        onEdit={() => setModalOpen(true)}
                     />
                 ))}
             </ul>
+
+            <Modal onOpen={modalOpen} onClose={() => setModalOpen(false)}>
+                test
+            </Modal>
         </div>
     );
 };
