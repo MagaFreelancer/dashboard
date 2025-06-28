@@ -1,1 +1,2 @@
-export { useEditProductStock } from "./model";
+export { useProductStock } from "./model";
+export { StockEditForm } from "./ui";
