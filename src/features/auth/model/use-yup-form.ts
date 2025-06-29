@@ -1,13 +1,14 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { loginSchema, registerSchema } from "@/entities/auth";
+import { useAppDispatch } from "@/shared/lib/hooks";
+import { fetchLogin, fetchRegister } from "..";
 
 export const useYupForm = () => {
-    const { pathname } = useLocation(); // "login" | "register"
+    const { pathname } = useLocation();
     const isLogin = pathname.includes("login");
-
     const {
         handleSubmit,
         register,
@@ -18,6 +19,14 @@ export const useYupForm = () => {
     } = useForm<any>({
         resolver: yupResolver(isLogin ? loginSchema : registerSchema),
     });
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const onSubmit = async (data: any) => {
+        const request = isLogin ? fetchLogin : fetchRegister;
+        await dispatch(request(data));
+
+        navigate("/");
+    };
 
     useEffect(() => {
         clearErrors();
@@ -31,5 +40,6 @@ export const useYupForm = () => {
         errors,
         isLogin,
         clearErrors,
+        onSubmit,
     };
 };

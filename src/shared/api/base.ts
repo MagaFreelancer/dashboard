@@ -1,13 +1,13 @@
 import axios from "axios";
 
-export const API_URL = "http://localhost:5000/api";
+export const API_URL = "https://f1f68e8aa8f9580b.mokky.dev";
 
-export const $api = axios.create({
+export const instance = axios.create({
     baseURL: API_URL,
     withCredentials: true,
 });
 
-$api.interceptors.request.use((config) => {
+instance.interceptors.request.use((config) => {
     const token = localStorage.getItem("token");
     if (token && config.headers) {
         config.headers.Authorization = `Bearer ${token}`;

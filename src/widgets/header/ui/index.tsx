@@ -3,6 +3,7 @@ import React from "react";
 import { Profile } from "@/entities/profile";
 import { Dropdown } from "@/shared/ui/dropdown";
 import { Input } from "@/shared/ui/input";
+import { DropdownList } from "./dropdown-list";
 
 interface Props {
     className?: string;
@@ -21,18 +22,15 @@ export const Header: React.FC<Props> = ({ className }: Props) => {
             </div>
             <div className="relative">
                 <Dropdown
+                    className=" !shadow-lg  "
                     trigger={
                         <Profile
                             name="John Doe"
-                            src="https://randomuser.me/api/portraits/men/75.jpg"
+                            src="https://i1.sndcdn.com/avatars-000776229100-mdfped-t240x240.jpg"
                         />
                     }
                 >
-                    <ul>
-                        <li>
-                            <button>Logout</button>
-                        </li>
-                    </ul>
+                    <DropdownList />
                 </Dropdown>
             </div>
         </header>

@@ -2,7 +2,8 @@ export const ROUTES = {
     HOME: "/",
     LOGIN: "/login",
     REGISTER: "/register",
-    PROFILE: (id: string) => `/profile/${id}`,
+    PROFILE: "/profile",
+    LOGOUT: "/logout",
 } as const;
 
 export type AppRouteKeys = keyof typeof ROUTES;

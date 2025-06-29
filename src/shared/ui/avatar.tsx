@@ -8,7 +8,12 @@ interface Props {
 
 export const Avatar: React.FC<Props> = ({ className, src }: Props) => {
     return (
-        <div className={clsx("w-[40px] h-[40px] rounded-full", className)}>
+        <div
+            className={clsx(
+                "min-w-[40px] min-h-[40px] rounded-full overflow-hidden",
+                className
+            )}
+        >
             <img
                 src={src}
                 className="w-full h-full object-cover"

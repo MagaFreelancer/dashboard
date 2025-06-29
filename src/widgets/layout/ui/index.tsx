@@ -9,7 +9,7 @@ export const LayoutComponent: React.FC = (): JSX.Element => {
             <SideBar />
 
             <div className="grid grid-rows-[auto_1fr]">
-                <Header className="flex items-center justify-between" />
+                <Header className="flex items-center justify-between p-4" />
                 <Outlet />
             </div>
         </div>

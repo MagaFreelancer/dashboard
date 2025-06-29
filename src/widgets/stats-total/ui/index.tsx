@@ -1,5 +1,5 @@
-import { StatWidget } from "../../../entities/stat-widget";
-import peopleIcon from "../../../shared/assets/icons/people-icon.svg";
+import { StatWidget } from "@/entities/stat-widget";
+import peopleIcon from "@/shared/assets/icons/people-icon.svg";
 
 export const StatsTotal = () => {
     return (

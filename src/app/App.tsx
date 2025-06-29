@@ -1,24 +1,43 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Provider } from "react-redux";
+import {
+    BrowserRouter,
+    createBrowserRouter,
+    Route,
+    RouterProvider,
+    Routes,
+} from "react-router-dom";
 import { AuthPage } from "@/pages/auth";
+import { Dashboard } from "@/pages/dashboard";
 import { LayoutComponent } from "@/widgets/layout";
-import { Dashboard } from "../pages/dashboard";
+import { AppInitializer } from "./app-initializer";
+import { store } from "./appStore";
 import { PrivateRoute } from "./route/private-route";
 import "./styles/index.css";
 
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: (
+            <PrivateRoute>
+                <Dashboard />
+            </PrivateRoute>
+        ),
+    },
+    {
+        path: "/register",
+        element: <AuthPage />,
+    },
+    {
+        path: "/login",
+        element: <AuthPage />,
+    },
+]);
 function App() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route element={<PrivateRoute />}>
-                    <Route element={<LayoutComponent />}>
-                        <Route path="/" element={<Dashboard />} />
-                    </Route>
-                </Route>
-                <Route path="/register" element={<AuthPage />} />
-                <Route path="/login" element={<AuthPage />} />
-                <Route path="*" element={<>ошибка</>} />
-            </Routes>
-        </BrowserRouter>
+        <Provider store={store}>
+            <AppInitializer />
+            <RouterProvider router={router} />
+        </Provider>
     );
 }
 

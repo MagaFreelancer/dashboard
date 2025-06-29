@@ -47,6 +47,7 @@ export const SideBar = (): JSX.Element => {
                                 item={item}
                                 handleClick={handleClick}
                                 isActive={isActive}
+                                className="text-[14px] font-semibold mr-6"
                             />
                         );
                     })}

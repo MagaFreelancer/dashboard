@@ -10,11 +10,11 @@ interface Props {
 
 export const Profile: React.FC<Props> = ({ className, src, name }: Props) => {
     return (
-        <div className={clsx("", className)}>
-            <Avatar src={src} />
-            <div>
-                <div>{name}</div>
-                <span>Admin</span>
+        <div className={clsx("flex items-center gap-3", className)}>
+            <Avatar src={src} className="w-[50px] h-[50px]" />
+            <div className="flex flex-col">
+                <div className="font-bold text-[14px] mb-">{name}</div>
+                <span className="text-[#565656] text-xs">Admin</span>
             </div>
         </div>
     );
