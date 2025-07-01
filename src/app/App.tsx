@@ -1,14 +1,7 @@
 import { Provider } from "react-redux";
-import {
-    BrowserRouter,
-    createBrowserRouter,
-    Route,
-    RouterProvider,
-    Routes,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthPage } from "@/pages/auth";
 import { Dashboard } from "@/pages/dashboard";
-import { LayoutComponent } from "@/widgets/layout";
 import { AppInitializer } from "./app-initializer";
 import { store } from "./appStore";
 import { PrivateRoute } from "./route/private-route";

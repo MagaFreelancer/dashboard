@@ -4,14 +4,18 @@ import React, { type JSX, type ReactNode } from "react";
 interface Props {
     className?: string;
     leftIcon?: ReactNode;
-    value: string;
+    value?: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder?: string;
+    defaultValue?: string;
+    type?: string;
 }
 
 export const Input: React.FC<Props> = ({
     className,
     leftIcon,
+    defaultValue,
+    type,
     onChange,
     value,
     ...props
@@ -31,7 +35,8 @@ export const Input: React.FC<Props> = ({
                 )}
                 onChange={onChange}
                 value={value}
-                type="text"
+                defaultValue={defaultValue}
+                type={type}
                 {...props}
             />
         </div>

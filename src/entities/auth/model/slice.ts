@@ -1,6 +1,6 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { fetchAuthMe, fetchLogin, fetchRegister } from "@/features/auth";
-import type { IAuthResponse, IUser, IUserState } from "./types";
+import type { IUserState } from "./types";
 
 const initialState: IUserState = {
     loading: false,

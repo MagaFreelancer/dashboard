@@ -3,8 +3,9 @@
 
 body {
     font-family: "Nunito Sans", sans-serif;
-    font-size: 18px;
-    overflow: hidden;
+    font-weight: 400;
+    font-size: 16px;
+    color: #202224;
 }
 
 @theme {
@@ -18,4 +19,8 @@ body {
 @theme {
     --font-sans: "Inter", sans-serif;
     --font-display: "Playfair Display", serif;
+}
+
+.entered {
+    transition: 0.4s ease-in-out;
 }
