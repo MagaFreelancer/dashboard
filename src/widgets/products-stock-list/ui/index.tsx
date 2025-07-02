@@ -1,14 +1,24 @@
-import { type JSX, useState } from "react";
-import { useGetProductStockQuery } from "@/entities/product-sotck-item";
+import { type JSX } from "react";
+import {
+    type TypeProductStock,
+    useGetProductStockQuery,
+} from "@/entities/product-sotck-item";
+import ProductStockDelete from "@/features/product-stock/delete/ui";
 import { StockEditForm, useProductStock } from "@/features/product-stock/edit";
 import Modal from "@/shared/ui/modal.tsx";
 import ProductList from "@/widgets/products-stock-list/ui/product-list.tsx";
 
 export const ProductsStockList = (): JSX.Element => {
     const { data, isLoading, isError } = useGetProductStockQuery();
-    const [modalOpen, setModalOpen] = useState<boolean>(false);
 
-    const { stockProduct } = useProductStock();
+    const {
+        stockProduct,
+        modalOpen,
+        modalType,
+        handlerEditStock,
+        handlerDeleteStock,
+        setModalOpen,
+    } = useProductStock();
 
     return (
         <div className="bg-white rounded-lg border-[1px] border-[#D5D5D5]">
@@ -24,14 +34,18 @@ export const ProductsStockList = (): JSX.Element => {
                 list={data}
                 isLoading={isLoading}
                 isError={isError}
-                onEdit={() => setModalOpen(true)}
+                onEdit={(item: TypeProductStock) => handlerEditStock(item)}
+                onDelete={(id: number) => handlerDeleteStock(id)}
             />
 
             <Modal onOpen={modalOpen} onClose={() => setModalOpen(false)}>
-                <p className="text-center text-[22px] font-bold mb-4">
-                    Редактирование
-                </p>
-                <StockEditForm data={stockProduct} />
+                {modalType === "edit" && <StockEditForm data={stockProduct} />}
+                {modalType === "delete" && (
+                    <ProductStockDelete
+                        id={stockProduct?.id}
+                        onClose={() => setModalOpen(false)}
+                    />
+                )}
             </Modal>
         </div>
     );

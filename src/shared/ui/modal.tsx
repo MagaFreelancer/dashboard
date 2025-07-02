@@ -45,7 +45,10 @@ const Modal = ({
             {(state) => (
                 <div
                     ref={nodeRef}
-                    onClick={onClose}
+                    onMouseDown={(e) => {
+                        // Закрывать модалку только если клик был по подложке
+                        if (e.target === e.currentTarget) onClose();
+                    }}
                     className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-3"
                 >
                     <div
@@ -73,50 +76,3 @@ const Modal = ({
 };
 
 export default Modal;
-
-//
-//
-// import { type ReactNode } from "react";
-// import type {JSX} from "react";
-// import {createPortal} from "react-dom";
-// import {X} from "lucide-react";
-// import {Transition} from "react-transition-group";
-//
-// interface IPropsChildren {
-//     children: ReactNode;
-//     onOpen: boolean;
-//     onClose: () => void;
-// }
-//
-// const Modal = ({children, onClose, onOpen}: IPropsChildren): JSX.Element | null => {
-//     const modalRoot = document.getElementById("modal");
-//
-//     if (!modalRoot || !onOpen) return null;
-//
-//     return createPortal(
-//         <Transition in={onOpen} timeout={2000} unmountOnExit={true}>
-//             {state => (
-//                 <div
-//                     onClick={onClose}
-//                     className={`fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-3 ${state}`}
-//                 >
-//                     <div onClick={(e) => e.stopPropagation()}
-//                          className="relative bg-white max-w-[500px] w-full shadow-lg rounded-[8px] break-words p-3">
-//                         <button onClick={onClose} className="absolute right-4 text-gray-500 hover:text-gray-800">
-//                             <X/>
-//                         </button>
-//                         {children}
-//                     </div>
-//                 </div>
-//             )}
-//         </Transition>,
-//         modalRoot
-//     )
-// };
-//
-// export default Modal;
-//
-//
-//
-//
-//

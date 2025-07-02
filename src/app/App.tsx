@@ -1,19 +1,22 @@
 import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import { ProductStock } from "@/pages/product-stock";
+import { store } from "@/app/store";
 import { AuthPage } from "@/pages/auth";
-import { Dashboard } from "@/pages/dashboard";
-import { AppInitializer } from "./app-initializer";
-import { store } from "./appStore";
-import { PrivateRoute } from "./route/private-route";
+import { LayoutComponent } from "@/widgets/layout";
+// import { Dashboard } from "@/pages/dashboard";
+// import { AppInitializer } from "./app-initializer";
+
+// import { PrivateRoute } from "./route/private-route";
 import "./styles/index.css";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: (
-            <PrivateRoute>
-                <Dashboard />
-            </PrivateRoute>
+            <>
+                <LayoutComponent />
+            </>
         ),
     },
     {
@@ -28,7 +31,7 @@ const router = createBrowserRouter([
 function App() {
     return (
         <Provider store={store}>
-            <AppInitializer />
+            {/*<AppInitializer />*/}
             <RouterProvider router={router} />
         </Provider>
     );

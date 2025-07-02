@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
+import { userSlice } from "@/entities/auth";
 import { productsStockApi } from "@/entities/product-sotck-item";
 
 export const store = configureStore({
     reducer: {
         [productsStockApi.reducerPath]: productsStockApi.reducer,
+        user: userSlice.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(productsStockApi.middleware),

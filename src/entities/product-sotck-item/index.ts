@@ -6,6 +6,10 @@ export type {
     IPropsProductStock,
 } from "./model/product-types";
 
-export const { useGetProductStockQuery } = productsStockApi;
+export const {
+    useGetProductStockQuery,
+    useEditProductStockMutation,
+    useDeleteProductStockMutation,
+} = productsStockApi;
 export { productsStockApi } from "./api/get-prodcut-stock.ts";
 export { SkeletonStock } from "./ui/skeleton-stock.tsx";

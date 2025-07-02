@@ -9,11 +9,12 @@ interface IPropsProductList {
     list: TypeProductStock[] | undefined;
     isLoading: boolean;
     isError: boolean;
-    onEdit: (id: number) => void;
+    onEdit: (item: TypeProductStock) => void;
+    onDelete: (id: number) => void;
 }
 
 const ProductList = (props: IPropsProductList) => {
-    const { onEdit, list, isLoading, isError } = props;
+    const { onEdit, onDelete, list, isLoading, isError } = props;
 
     return (
         <ul>
@@ -24,8 +25,8 @@ const ProductList = (props: IPropsProductList) => {
                     title={item.title}
                     category={item.category}
                     price={item.price}
-                    onDelete={() => console.log("delete")}
-                    onEdit={() => onEdit(item.id)}
+                    onDelete={() => onDelete(item.id)}
+                    onEdit={() => onEdit(item)}
                 />
             ))}
 

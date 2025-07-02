@@ -1,5 +1,6 @@
 import React, { type JSX } from "react";
 import { Outlet } from "react-router-dom";
+import { ProductStock } from "@/pages/product-stock";
 import { Header } from "@/widgets/header";
 import { SideBar } from "@/widgets/side-bar";
 
@@ -11,6 +12,7 @@ export const LayoutComponent: React.FC = (): JSX.Element => {
             <div className="grid grid-rows-[auto_1fr]">
                 <Header className="flex items-center justify-between p-4" />
                 <Outlet />
+                <ProductStock />
             </div>
         </div>
     );
