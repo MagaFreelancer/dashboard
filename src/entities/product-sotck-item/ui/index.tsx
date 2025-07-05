@@ -1,4 +1,5 @@
 import { SquarePen, Trash2 } from "lucide-react";
+import type { FC } from "react";
 import type { IPropsProductStock } from "@/entities/product-sotck-item";
 
 interface IProductStock extends IPropsProductStock {
@@ -6,7 +7,7 @@ interface IProductStock extends IPropsProductStock {
     onDelete: () => void;
 }
 
-export const ProductStockItem = (props: IProductStock) => {
+export const ProductStockItem: FC<IProductStock> = (props) => {
     const { image, title, category, price, onEdit, onDelete } = props;
 
     return (
